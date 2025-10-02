@@ -2,22 +2,6 @@
 
 Sistema modular para análise de interações de chatbot, classificação automática de problemas e geração de relatórios detalhados.
 
-## 📁 Estrutura Modular
-
-```
-src/
-├── __init__.py              # Pacote principal
-├── analyzer.py              # Função principal e orquestração
-├── config.py                # Configurações e constantes
-├── cost_tracker.py          # Controle de custos da API OpenAI
-├── file_utils.py            # Utilitários para leitura de arquivos CSV
-├── text_classifier.py       # Sistema de classificação heurística
-├── topic_extractor.py       # Extração e agrupamento de tópicos
-├── openai_client.py         # Cliente e integração com OpenAI
-├── ml_models.py             # Modelos de Machine Learning
-└── report_generator.py      # Geração de relatórios em PDF
-```
-
 ## 🚀 Funcionalidades
 
 ### 🔍 Análise Automática
@@ -136,25 +120,6 @@ USE_OVERSAMPLING=true
 - Extensão de funcionalidades sem impacto
 - Paralelização de processamento
 
-## 💻 Exemplo de Uso Programático
-
-```python
-from src.openai_client import build_client, resumir_em_lote
-from src.text_classifier import atribuir_rotulo
-from src.file_utils import read_csv_com_fallback
-
-# Carrega dados
-df = read_csv_com_fallback("dados.csv")
-
-# Classifica textos
-df['rotulo'] = df['mensagem'].apply(atribuir_rotulo)
-
-# Gera resumos (se tiver API)
-client = build_client()
-if client:
-    resumos = resumir_em_lote(client, df['mensagem'].tolist(), "gpt-4.1-mini")
-    df['resumo'] = resumos
-```
 ## 📈 Métricas de Performance
 
 O sistema reporta automaticamente:
