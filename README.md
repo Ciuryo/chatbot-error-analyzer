@@ -40,15 +40,6 @@ src/
 - **Cache inteligente**: Evita reprocessamento desnecessário
 - **Fallback local**: Funciona sem API quando necessário
 
-## 📊 Tipos de Erro Detectados
-
-- Problemas com CPF
-- Questões de parcelamento
-- Erros em propostas
-- Problemas de navegação
-- Solicitações de atendimento humano
-- E muito mais...
-
 ## 🛠️ Instalação
 
 ### Pré-requisitos
@@ -164,7 +155,6 @@ if client:
     resumos = resumir_em_lote(client, df['mensagem'].tolist(), "gpt-4.1-mini")
     df['resumo'] = resumos
 ```
-
 ## 📈 Métricas de Performance
 
 O sistema reporta automaticamente:
@@ -187,9 +177,9 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para de
 ## 🆘 Suporte
 
 - 📧 Email: seu-email@exemplo.com
-- 🐛 Issues: [GitHub Issues](https://github.com/seu-usuario/chatbot-error-analyzer/issues)
-- 📖 Wiki: [Documentação completa](https://github.com/seu-usuario/chatbot-error-analyzer/wiki)
+- 🐛 Issues: [GitHub Issues](https://github.com/Ciuryo/chatbot-error-analyzer/issues)
+- 📖 Wiki: [Documentação completa](https://github.com/Ciuryo/chatbot-error-analyzer/wiki)
 
 ## 🏆 Créditos
 
-Desenvolvido por [Seu Nome](https://github.com/seu-usuario)
+Desenvolvido por [Ciuryo](https://github.com/Ciuryo)
