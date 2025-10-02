@@ -10,15 +10,6 @@ Sistema inteligente para análise automática de interações de chatbot usando 
 - **Relatórios Visuais**: Gera PDFs com gráficos e análises detalhadas
 - **Processamento em Lote**: Suporta múltiplos arquivos CSV simultaneamente
 
-## 📊 Tipos de Erro Detectados
-
-- Problemas com CPF
-- Questões de parcelamento
-- Erros em propostas
-- Problemas de navegação
-- Solicitações de atendimento humano
-- E muito mais...
-
 ## 🛠️ Instalação
 
 ### Pré-requisitos
@@ -48,49 +39,6 @@ pip install -r requirements.txt
 ```bash
 cp .env.example .env
 # Edite o arquivo .env com sua chave da OpenAI
-```
-
-## 🚀 Como Usar
-
-### 1. Prepare seus dados
-Coloque seus arquivos CSV na pasta `data/input/` com as colunas:
-- `Observação`: Texto da interação do usuário
-- Data/hora (qualquer formato)
-
-**Exemplo de formato CSV:**
-```csv
-Data;Observação
-2024-01-15 10:30:00;pergunta: Como faço para solicitar meu CPF?
-2024-01-15 11:15:00;pergunta: Não consigo ver as opções de parcelamento
-```
-
-Veja o arquivo `data/input/exemplo_conversas.csv` para referência.
-
-### 2. Execute a análise
-```bash
-python src/analyzer.py
-```
-
-### 3. Veja os resultados
-- **CSV processado**: `data/output/`
-- **Relatório PDF**: `reports/`
-- **Resumos por tópico**: `data/output/`
-
-## ⚙️ Configuração
-
-Edite o arquivo `.env` para personalizar:
-
-```bash
-# API OpenAI
-OPENAI_API_KEY=sua_chave_aqui
-
-# Modelos
-CHAT_MODEL=gpt-4o-mini
-EMBEDDING_MODEL=text-embedding-3-large
-
-# Performance
-SUMMARY_BATCH_SIZE=50
-USE_OVERSAMPLING=true
 ```
 
 ## 📈 Métricas de Performance
