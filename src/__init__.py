@@ -1,0 +1,1 @@
+# Pacote do analisador de erros do chatbot

@@ -1,0 +1,13 @@
+# Comandos para executar APÓS criar o repositório no GitHub
+
+# 1. Conectar ao repositório remoto
+git remote add origin https://github.com/Ciuryo/chatbot-error-analyzer.git
+
+# 2. Verificar conexão
+git remote -v
+
+# 3. Fazer o push inicial
+git push -u origin master
+
+# 4. Verificar se foi publicado
+# Acesse: https://github.com/Ciuryo/chatbot-error-analyzer

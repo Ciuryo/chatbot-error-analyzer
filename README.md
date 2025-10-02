@@ -1,14 +1,44 @@
 # 🤖 Analisador de Erros de Chatbot
 
-Sistema inteligente para análise automática de interações de chatbot usando IA, classificação de erros e geração de relatórios detalhados.
+Sistema modular para análise de interações de chatbot, classificação automática de problemas e geração de relatórios detalhados.
+
+## 📁 Estrutura Modular
+
+```
+src/
+├── __init__.py              # Pacote principal
+├── analyzer.py              # Função principal e orquestração
+├── config.py                # Configurações e constantes
+├── cost_tracker.py          # Controle de custos da API OpenAI
+├── file_utils.py            # Utilitários para leitura de arquivos CSV
+├── text_classifier.py       # Sistema de classificação heurística
+├── topic_extractor.py       # Extração e agrupamento de tópicos
+├── openai_client.py         # Cliente e integração com OpenAI
+├── ml_models.py             # Modelos de Machine Learning
+└── report_generator.py      # Geração de relatórios em PDF
+```
 
 ## 🚀 Funcionalidades
 
-- **Análise Automática**: Processa conversas de chatbot e identifica padrões de erro
-- **IA Integrada**: Usa GPT-4 para gerar resumos inteligentes das interações
-- **Classificação ML**: Treina modelos de machine learning para categorizar problemas
-- **Relatórios Visuais**: Gera PDFs com gráficos e análises detalhadas
-- **Processamento em Lote**: Suporta múltiplos arquivos CSV simultaneamente
+### 🔍 Análise Automática
+- **Classificação heurística**: Identifica tipos de problemas usando regex
+- **Extração de tópicos**: Agrupa interações por assunto
+- **Resumos inteligentes**: Gera resumos usando OpenAI GPT ou fallback local
+
+### 🤖 Machine Learning
+- **Embeddings**: Vetorização semântica usando OpenAI
+- **Classificação**: Regressão logística com balanceamento de classes
+- **Baseline TF-IDF**: Comparação com métodos tradicionais
+
+### 📊 Relatórios
+- **CSV estruturados**: Dados processados com resumos e classificações
+- **PDFs visuais**: Gráficos, estatísticas e análises detalhadas
+- **Agregação temporal**: Análise por dia/período
+
+### 💰 Controle de Custos
+- **Monitoramento**: Rastreamento de tokens e custos da API
+- **Cache inteligente**: Evita reprocessamento desnecessário
+- **Fallback local**: Funciona sem API quando necessário
 
 ## 📊 Tipos de Erro Detectados
 
@@ -68,7 +98,7 @@ Veja o arquivo `data/input/exemplo_conversas.csv` para referência.
 
 ### 2. Execute a análise
 ```bash
-python src/analyzer.py
+python run_analyzer.py
 ```
 
 ### 3. Veja os resultados
@@ -91,6 +121,48 @@ EMBEDDING_MODEL=text-embedding-3-large
 # Performance
 SUMMARY_BATCH_SIZE=50
 USE_OVERSAMPLING=true
+```
+
+## 🏗️ Benefícios da Modularização
+
+### ✅ Manutenibilidade
+- Código organizado em módulos específicos
+- Responsabilidades bem definidas
+- Fácil localização de funcionalidades
+
+### ✅ Testabilidade
+- Módulos independentes podem ser testados isoladamente
+- Mocking simplificado para testes unitários
+- Cobertura de código mais eficiente
+
+### ✅ Reutilização
+- Módulos podem ser importados individualmente
+- Funcionalidades reutilizáveis em outros projetos
+- APIs bem definidas entre componentes
+
+### ✅ Escalabilidade
+- Fácil adição de novos classificadores
+- Extensão de funcionalidades sem impacto
+- Paralelização de processamento
+
+## 💻 Exemplo de Uso Programático
+
+```python
+from src.openai_client import build_client, resumir_em_lote
+from src.text_classifier import atribuir_rotulo
+from src.file_utils import read_csv_com_fallback
+
+# Carrega dados
+df = read_csv_com_fallback("dados.csv")
+
+# Classifica textos
+df['rotulo'] = df['mensagem'].apply(atribuir_rotulo)
+
+# Gera resumos (se tiver API)
+client = build_client()
+if client:
+    resumos = resumir_em_lote(client, df['mensagem'].tolist(), "gpt-4.1-mini")
+    df['resumo'] = resumos
 ```
 
 ## 📈 Métricas de Performance
